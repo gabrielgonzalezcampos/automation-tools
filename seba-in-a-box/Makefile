@@ -27,7 +27,7 @@ CORDCTL_PLATFORM   ?= linux-amd64
 KAFKA_CHART_VERSION  ?= 0.13.3
 KAFKA_POD := "pod/cord-kafka-0"
 
-ETCD_OPERATOR_VERSION ?= 0.8.4
+ETCD_OPERATOR_VERSION ?= 0.8.3
 
 # Arguments passed to helm install/upgrade for all or specific charts
 HELM_GLOBAL_ARGS ?=
