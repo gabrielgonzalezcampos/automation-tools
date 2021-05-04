@@ -254,7 +254,7 @@ $(M)/mininet: | $(M)/onos $(M)/ponsim $(M)/ponX_fwd $(M)/ponsim-tosca
 
 $(M)/nem: | /usr/local/bin/cordctl $(M)/kafka-running $(INFRA_PREREQS)
 	cd $(WORKSPACE)/cord/helm-charts; helm dep update xos-core
-	cd $(WORKSPACE)/cord/helm-charts; helm upgrade --install $(HELM_NEM_ARGS) xos-core xos-core -f $(SEBAVALUES)
+	cd $(WORKSPACE)/cord/helm-charts; helm upgrade --install $(HELM_NEM_ARGS) xos-core xos-core -f $(SEBAVALUES) --version=4.0.4 
 	cd $(WORKSPACE)/cord/helm-charts; helm dep update xos-profiles/seba-services
 	cd $(WORKSPACE)/cord/helm-charts; helm upgrade --install $(HELM_NEM_ARGS) seba-services xos-profiles/seba-services -f $(SEBAVALUES)
 	cd $(WORKSPACE)/cord/helm-charts; helm dep update workflows/$(NEM_WORKFLOW)
