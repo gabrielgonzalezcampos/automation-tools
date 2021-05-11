@@ -402,7 +402,5 @@ reset-kubeadm: remove-chart-milestones remove-kube-milestones remove-test-milest
 
 change-to-bmv2: 
 	sudo helm del --purge mininet
-	cd $(WORKSPACE)/cord/helm-charts
-	helm update
-	helm install -n mininet-bmv2 mininet-bmv2
+	cd $(WORKSPACE)/cord/helm-charts; helm install -n mininet-bmv2 mininet-bmv2
 	
