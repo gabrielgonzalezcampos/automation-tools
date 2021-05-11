@@ -101,7 +101,7 @@ validate_args:
 	fi
 
 $(M)/setup:
-	sudo $(MAKEDIR)/../scripts/portcheck.sh
+	sudo $(MAKEDIR)/../../scripts/portcheck.sh
 	mkdir -p $(M)
 	sudo apt update
 	sudo apt install -y httpie jq software-properties-common
