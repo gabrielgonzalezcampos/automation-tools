@@ -401,7 +401,7 @@ reset-kubeadm: remove-chart-milestones remove-kube-milestones remove-test-milest
 	for br in /sys/class/net/nni*; do sudo ip link delete `basename $$br` type bridge; done || true
 
 change-to-bmv2: 
-	helm delete ––purge mininet
+	sudo helm del --purge mininet
 	cd $(WORKSPACE)/cord/helm-charts
 	helm install -n mininet-bmv2 mininet-bmv2
 	
