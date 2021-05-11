@@ -399,3 +399,9 @@ reset-kubeadm: remove-chart-milestones remove-kube-milestones remove-test-milest
 	sudo rm -f /var/lib/cni/networks/k8s-pod-network/* || true
 	for br in /sys/class/net/pon*; do sudo ip link delete `basename $$br` type bridge; done || true
 	for br in /sys/class/net/nni*; do sudo ip link delete `basename $$br` type bridge; done || true
+
+change-to-bmv2: 
+	helm delete ––purge mininet
+	cd $(WORKSPACE)/cord/helm-charts
+	helm install -n mininet-bmv2 mininet-bmv2
+	
