@@ -1,7 +1,7 @@
 SHELL           := /bin/bash
 BUILD           ?= /tmp
 M               ?= $(BUILD)/milestones
-MAKEDIR         := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+MAKEDIR         := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))../
 WORKSPACE       ?= $(HOME)
 VIRTUALENV      ?= $(WORKSPACE)/cord/test
 SEBAVALUES      ?= configs/seba-ponsim.yaml
@@ -101,7 +101,7 @@ validate_args:
 	fi
 
 $(M)/setup:
-	sudo $(MAKEDIR)/../../scripts/portcheck.sh
+	sudo $(MAKEDIR)/../scripts/portcheck.sh
 	mkdir -p $(M)
 	sudo apt update
 	sudo apt install -y httpie jq software-properties-common
@@ -249,7 +249,7 @@ $(M)/ponX_fwd: | $(M)/ponsim
 $(M)/mininet: | $(M)/onos $(M)/ponsim $(M)/ponX_fwd $(M)/ponsim-tosca
 	sudo modprobe openvswitch
 	timeout 60s bash -c "cordctl model sync Switch -f 'driver=$(FABRIC_DRIVER)'"
-	cd $(WORKSPACE)/cord/helm-charts; helm upgrade --install $(HELM_GLOBAL_ARGS) mininet mininet-bmv2 -f $(SEBAVALUES) --set numOlts=$(NUM_OLTS) --set numOnus=$(NUM_ONUS_PER_OLT)
+	cd $(WORKSPACE)/cord/helm-charts; helm upgrade --install $(HELM_GLOBAL_ARGS) mininet mininet -f $(SEBAVALUES) --set numOlts=$(NUM_OLTS) --set numOnus=$(NUM_ONUS_PER_OLT)
 	touch $@
 
 $(M)/nem: | /usr/local/bin/cordctl $(M)/kafka-running $(INFRA_PREREQS)
