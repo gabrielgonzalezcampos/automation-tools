@@ -94,9 +94,9 @@ validate_args:
 		echo "Invalid value: NUM_OLTS must between 1 and 6"; \
 		exit 1; \
 	fi
-	if ! ([[ $(NUM_ONUS_PER_OLT) == ?(-)+([0-9]) ]] && [ $(NUM_ONUS_PER_OLT) -ge 1 ] && [ $(NUM_ONUS_PER_OLT)*$(NUM_OLTS) -le 16 ]); \
+	if ! ([[ $(NUM_ONUS_PER_OLT) == ?(-)+([0-9]) ]] && [ $(NUM_ONUS_PER_OLT) -ge 1 ] && [ $(NUM_ONUS_PER_OLT) -le 2 ]); \
 	then \
-		echo "Invalid value: NUM_ONUS_PER_OLT*NUM_OLTS must between 1 and 16"; \
+		echo "Invalid value: NUM_ONUS_PER_OLT must between 1 and 2"; \
 		exit 1; \
 	fi
 
