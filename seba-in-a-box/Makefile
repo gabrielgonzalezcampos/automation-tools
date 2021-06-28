@@ -89,14 +89,14 @@ sdbng-latest: NEM_WORKFLOW := dt-workflow
 sdbng-latest: ponsim
 
 validate_args:
-	if ! ([[ $(NUM_OLTS) == ?(-)+([0-9]) ]] && [ $(NUM_OLTS) -ge 1 ] && [ $(NUM_OLTS) -le 4 ]); \
+	if ! ([[ $(NUM_OLTS) == ?(-)+([0-9]) ]] && [ $(NUM_OLTS) -ge 1 ] && [ $(NUM_OLTS) -le 6 ]); \
 	then \
-		echo "Invalid value: NUM_OLTS must between 1 and 4"; \
+		echo "Invalid value: NUM_OLTS must between 1 and 6"; \
 		exit 1; \
 	fi
-	if ! ([[ $(NUM_ONUS_PER_OLT) == ?(-)+([0-9]) ]] && [ $(NUM_ONUS_PER_OLT) -ge 1 ] && [ $(NUM_ONUS_PER_OLT) -le 4 ]); \
+	if ! ([[ $(NUM_ONUS_PER_OLT) == ?(-)+([0-9]) ]] && [ $(NUM_ONUS_PER_OLT) -ge 1 ] && [ $(NUM_ONUS_PER_OLT)*$(NUM_OLTS) -le 16 ]); \
 	then \
-		echo "Invalid value: NUM_ONUS_PER_OLT must between 1 and 4"; \
+		echo "Invalid value: NUM_ONUS_PER_OLT*NUM_OLTS must between 1 and 16"; \
 		exit 1; \
 	fi
 
